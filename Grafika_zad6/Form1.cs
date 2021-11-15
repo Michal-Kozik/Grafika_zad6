@@ -18,17 +18,47 @@ namespace Grafika_zad6
         Pen newpx = new Pen(Brushes.Red);
         Graphics g;
 
+        const int POINTS_PER_CURVE = 1000;
+
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Draw()
+        {
+            g.Clear(Form1.ActiveForm.BackColor);
+            // Rysowanie punktow.
+            for (int i = 0; i < pointList.Count; i += 2)
+            {
+                Rectangle rectangle = new Rectangle((int)pointList[i] - 2, (int)pointList[i + 1] - 2, 4, 4);
+                g.FillRectangle(px, rectangle);
+            }
+
+            // Rysowanie krzywej z POINTS_PER_CURVE punktow.
+            Bezier bezier = new Bezier();
+            double[] pointArray = new double[pointList.Count];
+            pointList.CopyTo(pointArray, 0);
+            double[] p = new double[POINTS_PER_CURVE];
+
+            p = bezier.BezierCalculate(pointArray, POINTS_PER_CURVE / 2, p);
+            for (int i = 1; i < POINTS_PER_CURVE - 1; i += 2)
+            {
+                g.DrawRectangle(newpx, new Rectangle((int)p[i + 1], (int)p[i], 1, 1));
+                g.Flush();
+                Application.DoEvents();
+            }
+
         }
 
         private void PictureBox_MouseClick(object sender, MouseEventArgs e)
         {
             pointList.Add(e.X);
             pointList.Add(e.Y);
+            //numericUpDownPoint.Maximum = numericUpDownPoint.Value + 1;
             numericUpDownPoint.Value++;
-            // rysowanie;
+            //numericUpDownPoint.Minimum = 1;
+            Draw();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -42,7 +72,7 @@ namespace Grafika_zad6
             {
                 pointList[(int)numericUpDownPoint.Value * 2 - 2] = Int32.Parse(numericUpDownX.Value.ToString());
                 pointList[(int)numericUpDownPoint.Value * 2 - 1] = Int32.Parse(numericUpDownY.Value.ToString());
-                // rysowanie;
+                Draw();
             }
         }
 
@@ -56,7 +86,7 @@ namespace Grafika_zad6
             else
             {
                 numericUpDownX.Value = 0;
-                numericUpDownX.Value = 0;
+                numericUpDownY.Value = 0;
             }
         }
 

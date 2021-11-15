@@ -47,6 +47,8 @@ namespace Grafika_zad6
             // 
             // pictureBoxBezier
             // 
+            this.pictureBoxBezier.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBoxBezier.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxBezier.Location = new System.Drawing.Point(12, 12);
             this.pictureBoxBezier.Name = "pictureBoxBezier";
             this.pictureBoxBezier.Size = new System.Drawing.Size(426, 426);
@@ -141,6 +143,7 @@ namespace Grafika_zad6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.label4);
