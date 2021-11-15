@@ -35,7 +35,7 @@ namespace Grafika_zad6
                 g.FillRectangle(px, rectangle);
             }
 
-            // Rysowanie krzywej z POINTS_PER_CURVE punktow.
+            // Rysowanie krzywej z POINTS_PER_CURVE / 2 punktow.
             Bezier bezier = new Bezier();
             double[] pointArray = new double[pointList.Count];
             pointList.CopyTo(pointArray, 0);
@@ -55,9 +55,9 @@ namespace Grafika_zad6
         {
             pointList.Add(e.X);
             pointList.Add(e.Y);
-            //numericUpDownPoint.Maximum = numericUpDownPoint.Value + 1;
-            numericUpDownPoint.Value++;
-            //numericUpDownPoint.Minimum = 1;
+            numericUpDownPoint.Maximum++;
+            numericUpDownPoint.Value = pointList.Count / 2;
+            numericUpDownPoint.Minimum = 1;
             Draw();
         }
 

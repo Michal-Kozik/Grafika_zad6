@@ -60,7 +60,7 @@ namespace Grafika_zad6
             // 
             this.numericUpDownPoint.Location = new System.Drawing.Point(500, 93);
             this.numericUpDownPoint.Maximum = new decimal(new int[] {
-            1000,
+            0,
             0,
             0,
             0});
