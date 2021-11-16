@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -77,7 +78,6 @@ namespace Grafika_zad6
             double ti;      // t^i
             double tni;     // (1-n)^(n-i)
 
-            //potencjalny if
             ti = Math.Pow(t, i);
             tni = Math.Pow(1 - t, n - i);
             result = Ni(n, i) * ti * tni;
@@ -85,9 +85,9 @@ namespace Grafika_zad6
         }
 
         // Koncowy wzor
-        public double[] BezierCalculate(double[] b, int POINTS_PER_CURVE, double[] p)
+        public double[] BezierCalculate(List<Point> pointList, int POINTS_PER_CURVE, double[] p)
         {
-            int numberOfPoints = b.Length / 2;
+            int numberOfPoints = pointList.Count;
             int iCount = 0;
             int jCount;
             double step;
@@ -96,16 +96,16 @@ namespace Grafika_zad6
             step = 1.0 / (POINTS_PER_CURVE - 1);
             for (int k = 0; k < POINTS_PER_CURVE; k++)
             {
-                //potencjalny if
                 jCount = 0;
                 p[iCount] = 0.0;
                 p[iCount + 1] = 0.0;
                 for (int i = 0; i < numberOfPoints; i++)
                 {
                     double bernsteinResult = BernsteinPolynomial(numberOfPoints - 1, i, t);
-                    p[iCount] += bernsteinResult * b[jCount];
-                    p[iCount + 1] += bernsteinResult * b[jCount + 1];
-                    jCount += 2;
+                    Point point = pointList[jCount];
+                    p[iCount] += bernsteinResult * point.X;
+                    p[iCount + 1] += bernsteinResult * point.Y;
+                    jCount++;
                 }
                 iCount += 2;
                 t += step;
