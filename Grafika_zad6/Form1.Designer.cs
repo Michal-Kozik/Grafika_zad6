@@ -30,6 +30,7 @@ namespace Grafika_zad6
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBoxBezier = new System.Windows.Forms.PictureBox();
             this.numericUpDownPoint = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,10 +40,13 @@ namespace Grafika_zad6
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonUpdate = new System.Windows.Forms.Button();
+            this.numericUpDownPointsPerCurve = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBezier)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPoint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPointsPerCurve)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxBezier
@@ -139,12 +143,46 @@ namespace Grafika_zad6
             this.buttonUpdate.UseVisualStyleBackColor = true;
             this.buttonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
+            // numericUpDownPointsPerCurve
+            // 
+            this.numericUpDownPointsPerCurve.Location = new System.Drawing.Point(447, 418);
+            this.numericUpDownPointsPerCurve.Maximum = new decimal(new int[] {
+            2500,
+            0,
+            0,
+            0});
+            this.numericUpDownPointsPerCurve.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownPointsPerCurve.Name = "numericUpDownPointsPerCurve";
+            this.numericUpDownPointsPerCurve.Size = new System.Drawing.Size(340, 20);
+            this.numericUpDownPointsPerCurve.TabIndex = 9;
+            this.numericUpDownPointsPerCurve.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(444, 363);
+            this.label5.MaximumSize = new System.Drawing.Size(350, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(349, 52);
+            this.label5.TabIndex = 10;
+            this.label5.Text = resources.GetString("label5.Text");
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.numericUpDownPointsPerCurve);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -161,6 +199,7 @@ namespace Grafika_zad6
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPoint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPointsPerCurve)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,6 +216,8 @@ namespace Grafika_zad6
         private Label label3;
         private Label label4;
         private Button buttonUpdate;
+        private NumericUpDown numericUpDownPointsPerCurve;
+        private Label label5;
     }
 }
 

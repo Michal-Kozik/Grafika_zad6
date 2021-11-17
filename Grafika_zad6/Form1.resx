@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Poniższa wartość ustala z ilu punktów ma powstać krzywa Beziera. Im większa wartość tym dokładniejsza krzywa, lecz wolniejsze rysowanie. Im mniejsza, tym szybsze rysowanie kosztem dokładności. Obsługiwane są wartości od 10 do 2500.</value>
+  </data>
 </root>

@@ -14,12 +14,11 @@ namespace Grafika_zad6
     {
         private List<Point> pointList = new List<Point>();
 
-        SolidBrush px = new SolidBrush(Color.Black);
-        Pen newpx = new Pen(Brushes.Red);
+        SolidBrush pointColor = new SolidBrush(Color.Black);
+        Pen pen = new Pen(Brushes.Red);
         Graphics g;
 
-        // Ilosc punktow bedzie 2 razy mniejsza.
-        const int POINTS_PER_CURVE = 1000;
+        int POINTS_PER_CURVE;
 
         public Form1()
         {
@@ -28,16 +27,17 @@ namespace Grafika_zad6
 
         private void Draw()
         {
+            POINTS_PER_CURVE = (int)numericUpDownPointsPerCurve.Value * 2;
             g.Clear(Form1.ActiveForm.BackColor);
             // Rysowanie punktow.
             for (int i = 0; i < pointList.Count; i++)
             {
                 Point point = pointList[i];
                 Rectangle rectangle = new Rectangle(point.X - 2, point.Y - 2, 4, 4);
-                g.FillRectangle(px, rectangle);
+                g.FillRectangle(pointColor, rectangle);
             }
 
-            // Rysowanie krzywej z POINTS_PER_CURVE / 2 punktow.
+            // Rysowanie krzywej z POINTS_PER_CURVE punktow.
             Bezier bezier = new Bezier();
             List<Point> pointListCopy = new List<Point>(pointList);
             double[] p = new double[POINTS_PER_CURVE];
@@ -45,7 +45,7 @@ namespace Grafika_zad6
             p = bezier.BezierCalculate(pointListCopy, POINTS_PER_CURVE / 2, p);
             for (int i = 1; i < POINTS_PER_CURVE - 1; i += 2)
             {
-                g.DrawRectangle(newpx, new Rectangle((int)p[i + 1], (int)p[i], 1, 1));
+                g.DrawRectangle(pen, new Rectangle((int)p[i + 1], (int)p[i], 1, 1));
                 g.Flush();
                 Application.DoEvents();
             }
